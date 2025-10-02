@@ -6,6 +6,7 @@
     --shadow: 0px 6px 30px rgba(0, 0, 0, 0.1);
     --primary-green: #014E2C;
     --light-green: #e6edea;
+    --light-gray: #e0e0e0;
 }
 
 body {
@@ -928,4 +929,34 @@ input.form-control {
 .form-control:focus {
     box-shadow: none;
     border-color: var(--brand);
+}
+
+
+/* CTA Section Styling */
+#cta-section {
+    background-color: #f3f4f6; /* Light gray background to match the image */
+    padding-top: 5rem !important; /* Adding padding to match the visual spacing */
+    padding-bottom: 5rem !important; /* Adding padding to match the visual spacing */
+}
+
+/* Reusing the existing button style for consistency */
+.custom-btn-green {
+    background-color: #047857; /* Dark green */
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.custom-btn-green:hover {
+    background-color: #065f46; /* Slightly darker on hover */
+    color: white;
+}
+
+/* Ensure text colors match the overall theme */
+#cta-section h2 {
+    color: #111827; /* Darker header text */
+}
+
+#cta-section p {
+    color: #4b5563; /* Muted body text */
 }

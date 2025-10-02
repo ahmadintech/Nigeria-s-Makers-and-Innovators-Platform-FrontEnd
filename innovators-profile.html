@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aisha Bello | Innovator Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset and Base Styles */
+        :root {
+            --primary-color: #007bff; /* Standard blue */
+            --green-accent: #117a3a; /* Darker green for buttons/accents */
+            --orange-accent: #fd7e14; /* Orange for secondary button/callout */
+            --text-color: #333;
+            --secondary-text-color: #666;
+            --background-color: #f9f9f9;
+            --card-background: #fff;
+            --border-color: #ddd;
+            --tag-background: #e9ecef;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        /* --- Layout Container --- */
+        .profile-container {
+            max-width: 900px; /* Narrower container for a profile page */
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* --- Breadcrumbs/Navigation --- */
+        .breadcrumbs {
+            font-size: 0.85em;
+            color: var(--secondary-text-color);
+            margin-bottom: 20px;
+        }
+        .breadcrumbs a {
+            color: var(--secondary-text-color);
+        }
+        .breadcrumbs span {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        /* --- Profile Header Section --- */
+        .profile-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+            padding: 30px;
+            background-color: var(--card-background);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .profile-img-container {
+            flex-shrink: 0;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: 0 0 0 5px var(--background-color);
+        }
+
+        .profile-details {
+            flex-grow: 1;
+        }
+
+        .profile-name {
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .profile-title, .profile-location {
+            font-size: 1.1em;
+            color: var(--secondary-text-color);
+            margin-bottom: 5px;
+        }
+        
+        /* Action Buttons */
+        .profile-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .btn-connect {
+            background-color: var(--green-accent);
+            color: white;
+        }
+
+        .btn-message {
+            background-color: var(--orange-accent);
+            color: white;
+        }
+        
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Social Icons */
+        .social-links {
+            margin-top: 15px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: var(--secondary-text-color);
+            font-size: 1.4em;
+        }
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* --- Section Styling --- */
+        .profile-section {
+            background-color: var(--card-background);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        /* --- Key Achievements --- */
+        .achievements-list {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .achievements-list li {
+            margin-bottom: 8px;
+            color: var(--secondary-text-color);
+        }
+
+        /* --- Skills Section --- */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background-color: var(--tag-background);
+            color: var(--text-color);
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-weight: 500;
+            cursor: default;
+        }
+
+        /* --- My Innovations Section --- */
+        .innovation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .innovation-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: relative;
+            background-color: #000; /* Dark background for the image overlay effect */
+        }
+        
+        .innovation-image-container {
+            height: 150px;
+            position: relative;
+        }
+
+        .innovation-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5; /* Darken the image */
+            transition: opacity 0.3s;
+        }
+        
+        .innovation-card:hover .innovation-image-container img {
+            opacity: 0.7;
+        }
+
+        .card-metadata {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 0.75em;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 4px;
+            color: white;
+            z-index: 10;
+        }
+
+        .metadata-market { background-color: var(--green-accent); }
+        .metadata-development { background-color: var(--orange-accent); }
+        .metadata-prototype { background-color: var(--primary-color); }
+
+
+        .innovation-text-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px;
+            color: white;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
+        }
+
+        .innovation-card-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .innovation-tagline {
+            font-size: 0.85em;
+            color: #ccc;
+            /* Text truncation for the brief description */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; 
+            -webkit-box-orient: vertical;
+        }
+
+        /* Tags at the bottom of the card */
+        .card-footer-tags {
+            display: flex;
+            gap: 5px;
+            font-size: 0.75em;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .footer-tag {
+            color: #ddd;
+        }
+        .footer-tag-location {
+            color: #aaa;
+        }
+
+        /* Media Query for responsiveness */
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+
+        <div class="breadcrumbs">
+            <a href="#">Discover</a> / <a href="#">Innovators</a> / <span>Aisha Bello</span>
+        </div>
+
+        <header class="profile-header">
+            <div class="profile-img-container">
+                <img src="https://i.imgur.com/rM1r7QZ.png" alt="Aisha Bello" class="profile-img">
+            </div>
+            <div class="profile-details">
+                <h1 class="profile-name">Aisha Bello</h1>
+                <div class="profile-title">Software Engineer | AI Enthusiast</div>
+                <div class="profile-location">Lagos, Nigeria</div>
+                
+                <div class="profile-actions">
+                    <button class="btn btn-connect">Connect</button>
+                    <button class="btn btn-message">Send Message</button>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#" title="LinkedIn">in</a> 
+                    <a href="#" title="GitHub">gh</a>
+                    <a href="#" title="Website">🔗</a>
+                </div>
+            </div>
+        </header>
+
+        <section class="profile-section">
+            <h2 class="section-title">About Me</h2>
+            <p>
+                Aisha Bello is a passionate software engineer based in Lagos, Nigeria, specializing in artificial intelligence and machine learning. With a background in computer service, she's dedicated to developing innovative solutions that address local challenges. Aisha is an active member of the tech community, often participating in hackathons and workshops to share her knowledge and collaborate with fellow innovators.
+            </p>
+        </section>
+        
+        <section class="profile-section">
+            <h2 class="section-title">Key Achievements</h2>
+            <ul class="achievements-list">
+                <li>Winner of the 2023 National Innovation Award for our Smart Agriculture System.</li>
+                <li>Developed and launched an AI-powered healthcare assistant used by over 10,000 people.</li>
+                <li>Contributed to a major open-source renewable energy management platform.</li>
+            </ul>
+        </section>
+
+        <section class="profile-section">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-list">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Machine Learning</span>
+                <span class="skill-tag">Data Analysis</span>
+                <span class="skill-tag">Cloud Computing</span>
+                <span class="skill-tag">Software Development</span>
+                <span class="skill-tag">Natural Language Processing</span>
+            </div>
+        </section>
+
+        <section class="profile-section">
+            <h2 class="section-title">My Innovations</h2>
+            <div class="innovation-grid">
+                
+                <div class="innovation-card">
+                    <div class="innovation-image-container">
+                        <img src="https://i.imgur.com/vHq0L9T.png" alt="Smart Agriculture System Image">
+                    </div>
+                    <div class="card-metadata metadata-market">Market Ready</div>
+                    <div class="innovation-text-overlay">
+                        <div class="innovation-card-title">Smart Agriculture System</div>
+                        <div class="innovation-tagline">
+                            An intelligent system for optimizing crop harvesting using AI, sensor data, an...
+                        </div>
+                        <div class="card-footer-tags">
+                            <span class="footer-tag">Agriculture</span>
+                            <span class="footer-tag">| Kano, Nigeria</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="innovation-card">
+                    <div class="innovation-image-container">
+                        <img src="https://i.imgur.com/uRjXp7M.png" alt="AI Healthcare Assistant Image">
+                    </div>
+                    <div class="card-metadata metadata-development">In Development</div>
+                    <div class="innovation-text-overlay">
+                        <div class="innovation-card-title">AI-Powered Healthcare Assistant</div>
+                        <div class="innovation-tagline">
+                            A virtual assistant providing personalized healthcare advice and...
+                        </div>
+                        <div class="card-footer-tags">
+                            <span class="footer-tag">HealthTech</span>
+                            <span class="footer-tag">| Lagos, Nigeria</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="innovation-card">
+                    <div class="innovation-image-container">
+                        <img src="https://i.imgur.com/N7Qc0q2.png" alt="Renewable Energy Management Image">
+                    </div>
+                    <div class="card-metadata metadata-prototype">Prototype</div>
+                    <div class="innovation-text-overlay">
+                        <div class="innovation-card-title">Renewable Energy Management</div>
+                        <div class="innovation-tagline">
+                            A platform for managing and distributing sustainable renewable energy...
+                        </div>
+                        <div class="card-footer-tags">
+                            <span class="footer-tag">Energy</span>
+                            <span class="footer-tag">| Abuja, Nigeria</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>

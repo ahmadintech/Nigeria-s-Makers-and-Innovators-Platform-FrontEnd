@@ -1,0 +1,889 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Author: ahmadintech -->
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="lib/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="lib/fontawesome/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <title>Discover Nigeria's Innovators | Innovate Nigeria</title>
+    <style>
+        /* Minimal custom styles for discover page functionality */
+        .discover-page {
+            padding: 80px 0;
+        }
+
+        .content-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 992px) {
+            .content-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            padding: 15px;
+            border-radius: 7px;
+            position: sticky;
+            top: 140px;
+            height: fit-content;
+            max-height: calc(100vh - 160px);
+            overflow-y: auto;
+        }
+
+        @media (max-width: 992px) {
+            .sidebar {
+                position: static;
+                top: auto;
+                max-height: none;
+                margin-bottom: 20px;
+            }
+        }
+
+        .filter-group {
+            margin-bottom: 25px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .filter-group:first-child {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .filter-title {
+            font-size: 0.9em;
+            font-weight: 600;
+            color: var(--body);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .dropdown-menu {
+            border: 2px solid var(--brand);
+            padding: 12px 15px;
+            border-radius: 7px;
+            width: 100%;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-weight: 500;
+            position: relative;
+            background: white;
+        }
+
+        .dropdown-options {
+
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            box-shadow: var(--shadow);
+        }
+
+        .dropdown-options.show {
+            display: block;
+        }
+
+        .dropdown-option {
+            padding: 12px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .dropdown-option:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-option:hover {
+            background-color: var(--light-green);
+        }
+
+        .dropdown-option.selected {
+            background-color: var(--brand);
+            color: white;
+        }
+
+        /* Checkbox/Radio Styling */
+        .filter-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 0.95em;
+        }
+
+        .filter-option input[type="radio"] {
+            display: none;
+        }
+
+        .custom-radio {
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            margin-right: 12px;
+            display: inline-block;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .filter-option input[type="radio"]:checked+.custom-radio {
+            border-color: var(--brand);
+        }
+
+        .filter-option input[type="radio"]:checked+.custom-radio::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background-color: var(--brand);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Sidebar Buttons */
+        .sidebar-actions {
+            display: flex;
+            gap: 12px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Search Bar */
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 5px 20px;
+            margin-bottom: 25px;
+            width: 100%;
+        }
+
+        .search-bar input {
+            flex-grow: 1;
+            border: none;
+            outline: none;
+            font-size: 1em;
+            padding: 8px;
+            background: none;
+            color: var(--dark);
+        }
+
+        .search-bar .icon {
+            color: var(--body);
+            font-size: 1.3em;
+        }
+
+        /* Tabs Navigation Styling */
+        .custom-nav-tabs .nav-link {
+            color: #4b5563;
+            /* Default text color */
+            border: none;
+            border-bottom: 2px solid transparent;
+            font-weight: 600;
+            padding: 0.75rem 0;
+            margin-right: 1.5rem;
+            /* Space between tabs */
+            transition: all 0.3s ease;
+        }
+
+        .custom-nav-tabs .nav-link:hover {
+            color: #047857;
+            /* Hover color */
+        }
+
+        .custom-nav-tabs .nav-link.active {
+            color: #047857;
+            /* Active text color (Dark Green) */
+            border-bottom-color: #047857;
+            /* Active underline color */
+            background-color: transparent;
+        }
+
+
+        /* Results Header */
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        @media (max-width: 576px) {
+            .results-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .sort-dropdown {
+                width: 100%;
+            }
+
+            .sort-dropdown select {
+                width: 100%;
+            }
+        }
+
+        .results-count {
+            font-weight: 500;
+            color: var(--body);
+        }
+
+        .sort-dropdown {
+            display: flex;
+            align-items: center;
+            font-size: 0.9em;
+        }
+
+        .sort-dropdown label {
+            margin-right: 8px;
+            color: var(--body);
+        }
+
+        .sort-dropdown select {
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            background-color: white;
+            outline: none;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        /* Innovation Card Grid */
+        .innovation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .innovation-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .innovation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .innovation-card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .innovation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .innovation-image-container {
+            width: 100%;
+            height: 250px;
+            background-color: var(--light-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .innovation-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Special styling for the blank/logo cards */
+        .card-logo {
+            background-color: var(--brand);
+            height: 250px;
+        }
+
+        .card-logo-placeholder {
+            width: 80px;
+            height: 80px;
+            background-color: white;
+            transform: rotate(45deg);
+            border-radius: 15px;
+            border-bottom-right-radius: 0;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+
+        .payng-logo-placeholder {
+            width: 100%;
+            height: 100%;
+            background-color: var(--brand);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2em;
+            font-weight: 700;
+        }
+
+        .payng-logo-placeholder span {
+            font-size: 3em;
+            line-height: 0.8;
+        }
+
+        .innovation-details {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .innovation-title {
+            font-size: 1.2em;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .innovation-founder {
+            font-size: 0.95em;
+            color: var(--body);
+            margin-bottom: 12px;
+        }
+
+        .innovation-bio {
+            font-size: 0.95em;
+            color: var(--body);
+            margin-bottom: 15px;
+            flex-grow: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            line-height: 1.6;
+        }
+
+        /* --- Partner Card --- */
+
+        .partner-card {
+            background-color: var(--card-background);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .partner-initials-container {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            color: var(--text-color);
+            font-size: 1.5em;
+            font-weight: 600;
+            line-height: 60px;
+            margin: 0 auto 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .partner-name {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .partner-title {
+            font-size: 0.9em;
+            color: var(--secondary-text-color);
+            margin-bottom: 15px;
+        }
+
+        /* Investment Focus Tags */
+        .partner-focus-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .focus-tag {
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.75em;
+            font-weight: 500;
+            text-transform: uppercase;
+            /* Using a simple blue color scheme for all tags to match the image pattern */
+            background-color: #e6f7ff;
+            color: #007bff;
+        }
+
+        /* Specific tag color overrides based on the image's subtle color cues */
+        .focus-tag.tag-fintech {
+            background-color: #ffebf0;
+            color: #dc3545;
+        }
+
+        .focus-tag.tag-healthtech {
+            background-color: #e6ffed;
+            color: #28a745;
+        }
+
+        .focus-tag.tag-cleantech {
+            background-color: #e6f7ff;
+            color: #007bff;
+        }
+
+        .focus-tag.tag-agritech {
+            background-color: #fff3e6;
+            color: #ff9800;
+        }
+
+        .focus-tag.tag-edutech {
+            background-color: #ebe7ff;
+            color: #6f42c1;
+        }
+
+        .focus-tag.tag-preseed {
+            background-color: #f5f5f5;
+            color: #666;
+        }
+
+        .focus-tag.tag-seed {
+            background-color: #e0f7fa;
+            color: #00acc1;
+        }
+
+        .focus-tag.tag-seriesa {
+            background-color: #fbe6f7;
+            color: #e91e63;
+        }
+
+
+        .connect-btn {
+            display: block;
+            width: 100%;
+            padding: 5px 15px;
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .connect-btn:hover {
+            background-color: #0e6c31;
+        }
+
+        /* Mobile Filter Toggle */
+        .mobile-filter-toggle {
+            display: none;
+            background-color: var(--brand);
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            width: 100%;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-filter-toggle:hover {
+            background-color: #01652f;
+        }
+
+        @media (max-width: 992px) {
+            .mobile-filter-toggle {
+                display: flex;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .sidebar.active {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="70">
+
+    <!-- TOP NAV -->
+    <div class="top-nav" id="home">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-auto">
+                    <p> <i class='bx bxs-envelope'></i> info@innovateng.com</p>
+                    <p> <i class='bx bxs-phone-call'></i> +234 800 123 4567</p>
+                </div>
+                <div class="col-auto social-icons">
+                    <a href="#"><i class='bx bxl-facebook'></i></a>
+                    <a href="#"><i class='bx bxl-twitter'></i></a>
+                    <a href="#"><i class='bx bxl-instagram'></i></a>
+                    <a href="#"><i class='bx bxl-pinterest'></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <!-- Logo -->
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="img/logo.png" alt="Logo" height="40" class="me-2">
+                <span class="brand-text">Innovate Nigeria<span class="dot">.</span></span>
+            </a>
+
+            <!-- Toggler always on right -->
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Nav links -->
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav mx-auto text-center text-lg-start">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="discover-talent.html">Discover Talents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">About Us</a>
+                    </li>
+                </ul>
+
+                <!-- Desktop buttons -->
+                <div class="d-none d-lg-flex ms-lg-3">
+                    <a href="#" class="btn btn-brand-outline me-2">Login</a>
+                    <a href="#" class="btn btn-brand">Register</a>
+                </div>
+
+                <!-- Mobile buttons (inside collapse) -->
+                <div class="d-lg-none mt-3 d-flex">
+                    <a href="#" class="btn btn-brand-outline w-50 mb-2 me-2 py-1">Login</a>
+                    <a href="#" class="btn btn-brand w-50 mb-2 py-1">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Discover Page Content -->
+    <section class="discover-page">
+        <div class="container">
+            <!-- <h1 class="display-4 text-center mb-5">Discover Nigeria's Innovators</h1> -->
+
+            <div class="content-layout">
+
+                <aside class="sidebar border" id="sidebar">
+
+                    <div class="filter-group">
+                        <div class="filter-title">Location</div>
+                        <select class="dropdown-menu">
+                            <i class='bx bx-chevron-down'></i>
+                            <option>All Locations</option>
+                            <option value="lagos">Lagos</option>
+                            <option value="abuja">Abuja</option>
+                            <option value="kano">Kano</option>
+                            <option value="port-harcourt">Port Harcourt</option>
+                            <option value="ibadan">Ibadan</option>
+                            <option value="enugu">Enugu</option>
+                            <option value="kaduna">Kaduna</option>
+                            <option value="benin">Benin City</option>
+                        </select>
+                    </div>
+
+
+                    <div class="filter-group">
+                        <div class="filter-title">Industry</div>
+                        <label class="filter-option">
+                            <input type="radio" name="industry" value="Agriculture">
+                            <span class="custom-radio"></span>
+                            Agriculture
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="industry" value="Technology" checked>
+                            <span class="custom-radio"></span>
+                            Technology
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="industry" value="Healthcare">
+                            <span class="custom-radio"></span>
+                            Healthcare
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="industry" value="Education">
+                            <span class="custom-radio"></span>
+                            Education
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="industry" value="Energy">
+                            <span class="custom-radio"></span>
+                            Energy
+                        </label>
+                    </div>
+
+                    <div class="filter-group">
+                        <div class="filter-title">Innovation Type</div>
+                        <label class="filter-option">
+                            <input type="radio" name="innovation" value="Product" checked>
+                            <span class="custom-radio"></span>
+                            Product
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="innovation" value="Service">
+                            <span class="custom-radio"></span>
+                            Service
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="innovation" value="Research">
+                            <span class="custom-radio"></span>
+                            Research
+                        </label>
+                    </div>
+
+                    <div class="filter-group">
+                        <div class="filter-title">Funding Status</div>
+                        <label class="filter-option">
+                            <input type="radio" name="funding" value="Bootstrapped">
+                            <span class="custom-radio"></span>
+                            Bootstrapped
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="funding" value="Seed">
+                            <span class="custom-radio"></span>
+                            Seed
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="funding" value="Series A">
+                            <span class="custom-radio"></span>
+                            Series A
+                        </label>
+                    </div>
+
+                    <div class="filter-group">
+                        <div class="filter-title">Team Size</div>
+                        <label class="filter-option">
+                            <input type="radio" name="team" value="Solo">
+                            <span class="custom-radio"></span>
+                            Solo (1)
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="team" value="Small">
+                            <span class="custom-radio"></span>
+                            Small (2-10)
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="team" value="Medium">
+                            <span class="custom-radio"></span>
+                            Medium (11-50)
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="team" value="Large">
+                            <span class="custom-radio"></span>
+                            Large (51+)
+                        </label>
+                    </div>
+
+                    <div class="sidebar-actions">
+                        <button class="btn btn-brand">Apply</button>
+                        <button class="btn btn-brand-outline">Clear</button>
+                    </div>
+                </aside>
+
+                <main class="main-content">
+                    <h1 class="display-5 fw-bold mb-4">Discover Nigeria's Innovators</h1>
+
+                    <div class="search-bar shadow-sm">
+                        <i class='bx bx-search icon'></i>
+                        <input type="text" placeholder="Search innovators, skills, industries...">
+                    </div>
+
+                    <ul class="nav nav-tabs custom-nav-tabs mb-4" id="innovatorTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="innovators-tab" data-bs-toggle="tab"
+                                data-bs-target="#innovators" type="button" role="tab">Innovators</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="innovations-tab" data-bs-toggle="tab"
+                                data-bs-target="#innovations" type="button" role="tab">Innovations</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="partners-tab" data-bs-toggle="tab"
+                                data-bs-target="#partners" type="button" role="tab">Partners & Investors</button>
+                        </li>
+                    </ul>
+
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <p class="mb-0 text-muted">Showing 152 innovators</p>
+                        <div class="d-flex align-items-center">
+                            <label for="sortNewest" class="form-label mb-0 me-2 d-none d-md-block"
+                                style="font-size: 0.9rem;">Sort by:</label>
+                            <select class="form-select form-select-sm" id="sortNewest" style="width: 150px;">
+                                <option selected>Newest</option>
+                                <option value="1">Popular</option>
+                                <option value="2">Alphabetical</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="container my-4">
+                        <div class="row g-4">
+
+                            <div class="col-md-4">
+                                <div class="partner-card p-3 border rounded">
+                                    <div class="partner-initials-container">BA</div>
+                                    <div class="partner-name">Bolanle Adeyemi</div>
+                                    <div class="partner-title">Angel Investor | Lagos, Nigeria</div>
+                                    <div class="partner-focus-tags">
+                                        <span class="focus-tag tag-fintech">Fintech</span>
+                                        <span class="focus-tag tag-healthtech">HealthTech</span>
+                                    </div>
+                                    <button class="connect-btn">Connect</button>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="partner-card p-3 border rounded">
+                                    <div class="partner-initials-container">CO</div>
+                                    <div class="partner-name">Chinedu Okonkwo</div>
+                                    <div class="partner-title">VC, GreenTech Ventures | Abuja, Nigeria</div>
+                                    <div class="partner-focus-tags">
+                                        <span class="focus-tag tag-cleantech">CleanTech</span>
+                                        <span class="focus-tag tag-agritech">Agritech</span>
+                                    </div>
+                                    <button class="connect-btn">Connect</button>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="partner-card p-3 border rounded">
+                                    <div class="partner-initials-container">AB</div>
+                                    <div class="partner-name">Dr. Faruk Mustapha</div>
+                                    <div class="partner-title">Researcher, USILAG | Lagos, Nigeria</div>
+                                    <div class="partner-focus-tags">
+                                        <span class="focus-tag tag-healthtech">Health/Tech</span>
+                                        <span class="focus-tag tag-cleantech">DataTech</span>
+                                    </div>
+                                    <button class="connect-btn">Connect</button>
+                                </div>
+                            </div>
+
+                            <!-- Keep adding more col-md-4 for each partner -->
+
+                        </div>
+                    </div>
+
+
+
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta-section" class="py-5 text-center">
+        <div class="container">
+            <h2 class="display-6 fw-bold mb-3">Ready to Innovate?</h2>
+            <p class="lead mb-4">
+                Join Innovate Nigeria today and be part of the movement shaping the future.
+            </p>
+            <a href="#" class="btn btn-brand btn-lg px-4 py-2 fw-semibold">
+                Get Started
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-top text-center">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 text-center">
+                        <h4 class="navbar-brand">Innovate Nigeria<span class="dot">.</span></h4>
+                        <div class="col-auto conditions-section">
+                            <a href="#">Contact Us</a>
+                            <a href="#">Privacy Policy</a>
+                            <a href="#">Terms of Service</i></a>
+                        </div>
+
+                        <div class="col-auto social-icons">
+                            <a href="#"><i class='bx bxl-facebook'></i></a>
+                            <a href="#"><i class='bx bxl-twitter'></i></a>
+                            <a href="#"><i class='bx bxl-instagram'></i></a>
+                            <a href="#"><i class='bx bxl-pinterest'></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <p class="mb-0">&copy; 2025 Innovate Nigeria. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="lib/swiper/swiper-bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

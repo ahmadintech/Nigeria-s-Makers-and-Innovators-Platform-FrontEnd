@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarah Adebayo | Partner Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset and Base Styles (Reused) */
+        :root {
+            --primary-color: #007bff; /* Standard blue */
+            --green-accent: #117a3a; /* Darker green for buttons/accents */
+            --orange-accent: #fd7e14; /* Orange for secondary button/callout */
+            --text-color: #333;
+            --secondary-text-color: #666;
+            --background-color: #f9f9f9;
+            --card-background: #fff;
+            --border-color: #ddd;
+            --section-highlight-bg: #eef4f8; /* Light blue/green for investment thesis/stage */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        /* --- Layout Container --- */
+        .profile-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* --- Partner Header Section (New background color) --- */
+        .partner-header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            padding: 30px;
+            background-color: #e6f7ef; /* Light green background */
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .partner-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%; /* Circular image */
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .partner-name {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .partner-title-location {
+            font-size: 1em;
+            color: var(--secondary-text-color);
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        
+        .partner-actions {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .btn-connect {
+            background-color: var(--green-accent);
+            color: white;
+        }
+
+        .btn-message {
+            background-color: var(--orange-accent);
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: var(--secondary-text-color);
+            font-size: 1.4em;
+        }
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- Investment Thesis Section (Two Columns) --- */
+        .thesis-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .thesis-card, .about-section {
+            background-color: var(--card-background);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .thesis-text p {
+            font-size: 0.95em;
+            color: var(--secondary-text-color);
+        }
+
+        .thesis-group {
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+
+        .thesis-group-title {
+            font-size: 1em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--secondary-text-color);
+        }
+
+        .thesis-group.interest {
+            background-color: #f7fcf8; /* Very light green */
+        }
+        
+        .thesis-group.stage {
+            background-color: #f7f8fc; /* Very light blue/purple */
+        }
+
+        .interest-tags, .stage-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        /* Interest Tag colors (Industry) */
+        .tag-agri-tech { background-color: #e6ffed; color: #28a745; }
+        .tag-fintech { background-color: #ffebf0; color: #dc3545; }
+        .tag-renewable { background-color: #e6f7ff; color: #007bff; }
+
+        /* Stage Tag colors (Investment Stage) */
+        .tag-pre-seed { background-color: #f5f5f5; color: #666; }
+        .tag-seed { background-color: #e0f7fa; color: #00acc1; }
+        .tag-series-a { background-color: #fbe6f7; color: #e91e63; }
+
+        /* --- About Section --- */
+        .about-section {
+            margin-bottom: 30px;
+        }
+
+        .about-section .section-title {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 10px;
+        }
+        .about-section p {
+            font-size: 0.95em;
+            color: var(--secondary-text-color);
+        }
+
+        /* --- Investments & Achievements Section --- */
+        .investments-section {
+            padding-top: 0;
+        }
+
+        .investments-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+            background-color: var(--card-background);
+            border-radius: 8px 8px 0 0;
+        }
+
+        .investments-header .section-title {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .investments-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .filter-dropdown {
+            padding: 8px 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: var(--card-background);
+            outline: none;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 20px 30px;
+            background-color: #f7f7f7; /* Slightly darker than card background */
+        }
+
+        .metric-box {
+            background-color: var(--card-background);
+            padding: 15px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .metric-box-title {
+            font-size: 0.9em;
+            color: var(--secondary-text-color);
+            margin-bottom: 5px;
+        }
+
+        .metric-box-value {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--green-accent);
+        }
+
+        /* --- Portfolio Card Grid (Custom Green Cards) --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px 30px 30px;
+            background-color: #f7f7f7;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .portfolio-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            background-color: var(--green-accent); /* Solid green background */
+            color: white;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 300px;
+        }
+
+        .portfolio-image-container {
+            height: 120px;
+            position: relative;
+        }
+
+        .portfolio-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .portfolio-details {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .portfolio-card-title {
+            font-size: 1em;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .portfolio-founder {
+            font-size: 0.85em;
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-description {
+            font-size: 0.85em;
+            color: white;
+            flex-grow: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 4; 
+            -webkit-box-orient: vertical;
+        }
+
+        .funding-status {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 0.75em;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 4px;
+            color: white;
+            background-color: var(--orange-accent); /* Placeholder for 'Funded' */
+            z-index: 10;
+        }
+        
+        /* Media Query for responsiveness */
+        @media (max-width: 768px) {
+            .partner-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .thesis-section {
+                grid-template-columns: 1fr;
+            }
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+
+        <header class="partner-header">
+            <img src="https://i.imgur.com/uRjXp7M.png" alt="Sarah Adebayo" class="partner-img">
+            <div class="partner-details">
+                <h1 class="partner-name">Sarah Adebayo</h1>
+                <div class="partner-title-location">
+                    <span>Investment Analyst at **Growth Ventures**</span>
+                    <span style="font-size: 0.9em;"><span style="font-size: 1.2em;">📍</span> Lagos, Nigeria</span>
+                </div>
+                
+                <div class="partner-actions">
+                    <button class="btn btn-connect">Connect</button>
+                    <button class="btn btn-message">Send Message</button>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#" title="LinkedIn">in</a> 
+                    <a href="#" title="GitHub">gh</a>
+                    <a href="#" title="Website">🔗</a>
+                </div>
+            </div>
+        </header>
+
+        <section class="thesis-section">
+            <div class="thesis-card thesis-text">
+                <h2 class="section-title">Investment Thesis</h2>
+                <p>
+                    Our core focus and what we look for in potential partners.
+                </p>
+            </div>
+            <div class="thesis-card">
+                <div class="thesis-group interest">
+                    <div class="thesis-group-title">Industries of Interest</div>
+                    <div class="interest-tags">
+                        <span class="tag tag-agri-tech">Agri-Tech</span>
+                        <span class="tag tag-fintech">FinTech</span>
+                        <span class="tag tag-renewable">Renewable Energy</span>
+                    </div>
+                </div>
+                
+                <div class="thesis-group stage">
+                    <div class="thesis-group-title">Investment Stage</div>
+                    <div class="stage-tags">
+                        <span class="tag tag-pre-seed">Pre-Seed</span>
+                        <span class="tag tag-seed">Seed</span>
+                        <span class="tag tag-series-a">Series A</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2 class="section-title">About Growth Ventures</h2>
+            <p>
+                Growth Ventures is a venture capital firm focused on early-stage investments in innovative Nigerian startups. We look for companies with strong founding teams, scalable business models, and a clear path to profitability. Our areas of interest include Agri-Tech, FinTech, and Renewable Energy, with a focus on Pre-seed, Seed, and Series A stages. We provide not only capital but also strategic guidance and access to our network of industry experts to help our portfolio companies thrive and achieve their full potential.
+            </p>
+        </section>
+
+        <section class="investments-section">
+            <div class="investments-header">
+                <h2 class="section-title">Investments & Achievements</h2>
+                <div class="investments-controls">
+                    <select class="filter-dropdown">
+                        <option>Sort By: Newest</option>
+                        <option>Oldest</option>
+                    </select>
+                    <select class="filter-dropdown">
+                        <option>Filter by: Industry</option>
+                        <option>Agri-Tech</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <div class="metric-box-title">Total Investments</div>
+                    <div class="metric-box-value">12</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-box-title">Total Funding</div>
+                    <div class="metric-box-value">₦1.5B+</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-box-title">Avg. Investment</div>
+                    <div class="metric-box-value">₦125M</div>
+                </div>
+            </div>
+
+            <div class="portfolio-grid">
+                
+                <div class="portfolio-card">
+                    <div class="portfolio-image-container">
+                        <img src="https://i.imgur.com/vHq0L9T.png" alt="Agro-Solar Solutions">
+                    </div>
+                    <div class="funding-status">Funded</div>
+                    <div class="portfolio-details">
+                        <div class="portfolio-card-title">Agro-Solar Solutions</div>
+                        <div class="portfolio-founder">by Tunde Adesunla</div>
+                        <div class="portfolio-description">
+                            Developing affordable solar-powered irrigation systems for small-scale farmers in Northern Nigeria to help them optimize crop yields and food security.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-card" style="background-color: #20b2aa;"> <div class="portfolio-image-container" style="background-color: white;">
+                        <img src="https://i.imgur.com/k9bT6vL.png" alt="PayNama Digital Wallet" style="object-fit: contain; padding: 10px;">
+                    </div>
+                    <div class="funding-status">Funded</div>
+                    <div class="portfolio-details">
+                        <div class="portfolio-card-title">PayNama Digital Wallet</div>
+                        <div class="portfolio-founder">by Chinweike Nwosu</div>
+                        <div class="portfolio-description">
+                            A mobile-first digital wallet simplifying peer-to-peer payments and utility bills for urban dwellers.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-card">
+                    <div class="portfolio-image-container">
+                        <img src="https://i.imgur.com/uT9X5Yd.png" alt="HealthChain Africa">
+                    </div>
+                    <div class="funding-status">Funded</div>
+                    <div class="portfolio-details">
+                        <div class="portfolio-card-title">HealthChain Africa</div>
+                        <div class="portfolio-founder">by Funke Ojo</div>
+                        <div class="portfolio-description">
+                            A blockchain-based platform for secure, electronic health records, improving interoperability and patient data security across Nigerian hospitals.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
