@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="lib/fontawesome/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <title>Discover Nigeria's Innovators | Innovate Nigeria</title>
-    <style>
+    <!-- <style>
         /* Minimal custom styles for discover page functionality */
         .discover-page {
             padding: 80px 0;
@@ -456,6 +456,170 @@
                 display: block;
             }
         }
+    </style> -->
+
+
+    <style>
+        /* ===== INNOVATIONS PAGE SPECIFIC STYLES ===== */
+
+/* Innovation Card Grid - Innovations */
+.innovation-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.innovation-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.innovation-image-container {
+    width: 100%;
+    height: 250px;
+    background-color: var(--light-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.innovation-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Special styling for the blank/logo cards */
+.card-logo {
+    background-color: var(--brand);
+    height: 250px;
+}
+
+.card-logo-placeholder {
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    transform: rotate(45deg);
+    border-radius: 15px;
+    border-bottom-right-radius: 0;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.payng-logo-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: var(--brand);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.payng-logo-placeholder span {
+    font-size: 3em;
+    line-height: 0.8;
+}
+
+.innovation-details {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.innovation-title {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--dark);
+}
+
+.innovation-founder {
+    font-size: 0.95em;
+    color: var(--body);
+    margin-bottom: 12px;
+}
+
+.innovation-bio {
+    font-size: 0.95em;
+    color: var(--body);
+    margin-bottom: 15px;
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    line-height: 1.6;
+}
+
+/* Tags (Industry and Location) */
+.innovation-tags {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+    flex-wrap: wrap;
+}
+
+.tag {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.tag-agriculture { background-color: #e6ffed; color: var(--brand); }
+.tag-energy { background-color: #fff3e6; color: #ff9800; }
+.tag-education { background-color: #e6f7ff; color: #007bff; }
+.tag-fintech { background-color: #ffebf0; color: #dc3545; }
+.tag-technology { background-color: #ebe7ff; color: #6f42c1; }
+.tag-location { background-color: var(--light-green); color: var(--body); }
+
+/* Mobile Filter Toggle (Innovations specific) */
+.mobile-filter-toggle {
+    display: none;
+    background-color: var(--brand);
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    width: 100%;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.mobile-filter-toggle:hover {
+    background-color: #01652f;
+}
+
+@media (max-width: 992px) {
+    .mobile-filter-toggle {
+        display: flex;
+    }
+    
+    .sidebar {
+        display: none;
+    }
+
+    .sidebar.active {
+        display: block;
+    }
+}
     </style>
 </head>
 

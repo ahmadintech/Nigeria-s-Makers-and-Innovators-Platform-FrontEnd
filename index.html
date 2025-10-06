@@ -86,25 +86,80 @@
         </div>
     </nav>
     <!-- Showcase -->
-    <section class="showcase-section">
-        <div class="showcase-overlay"></div>
-        <div class="showcase-blur-1"></div>
-        <div class="showcase-blur-2"></div>
-        <div class="showcase-blur-3"></div>
+<!-- Showcase -->
+<section class="showcase-section">
+    <div class="showcase-overlay"></div>
+    <div class="showcase-blur-1"></div>
+    <div class="showcase-blur-2"></div>
+    <div class="showcase-blur-3"></div>
 
-        <div class="showcase-container">
-            <div class="showcase-heading">
-                <h1>Discover Nigeria’s <br><span>Next Big Idea</span></h1>
-            </div>
-            <div class="showcase-subtitle">
-                <p>Connect with innovators, explore groundbreaking projects, and find opportunities to shape the future.
-                </p>
-            </div>
-            <div class="showcase-button">
-                <a href="#">Join the community</a>
-            </div>
+    <div class="showcase-container">
+        <div class="showcase-heading">
+            <h1>Discover Nigeria’s <br><span>Next Big Idea</span></h1>
         </div>
-    </section>
+        <div class="showcase-subtitle">
+            <p>Connect with innovators, explore groundbreaking projects, and find opportunities to shape the future.</p>
+        </div>
+        <div class="showcase-button">
+            <a href="#">Join the community</a>
+        </div>
+    </div>
+
+    <!-- Chat Button -->
+    <button class="chat-help-btn" id="chatToggle" aria-label="Chat with us">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+            viewBox="0 0 16 16">
+            <path d="M8 0a8 8 0 0 0-6.32 12.906L.438 15.563a.5.5 0 0 0 .707.707l2.657-1.243A7.999 7.999 0 1 0 8 0zm3 6H5a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2z"/>
+        </svg>
+    </button>
+
+    <!-- Chat Popup -->
+    <div class="chat-popup" id="chatPopup">
+        <div class="chat-header">
+            <span>AI Assistant</span>
+            <button class="close-btn" id="closeChat">&times;</button>
+        </div>
+        <div class="chat-body">
+            <p class="typing-text" id="typingText"></p>
+        </div>
+        <div class="chat-footer">
+            <input type="text" placeholder="Type your message...">
+            <button>Send</button>
+        </div>
+    </div>
+</section>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const chatToggle = document.getElementById("chatToggle");
+    const chatPopup = document.getElementById("chatPopup");
+    const closeChat = document.getElementById("closeChat");
+    const typingText = document.getElementById("typingText");
+
+    const message = "👋 Hi, I’m your AI assistant. How can I help you?";
+    let index = 0;
+
+    function typeMessage() {
+        if (index < message.length) {
+            typingText.textContent += message.charAt(index);
+            index++;
+            setTimeout(typeMessage, 50); // typing speed
+        }
+    }
+
+    chatToggle.addEventListener("click", () => {
+        chatPopup.style.display = "flex";
+        typingText.textContent = "";
+        index = 0;
+        typeMessage();
+    });
+
+    closeChat.addEventListener("click", () => {
+        chatPopup.style.display = "none";
+    });
+});
+</script>
+
+
 
     <!-- Trusted Brands -->
     <section class="trusted-brands">
