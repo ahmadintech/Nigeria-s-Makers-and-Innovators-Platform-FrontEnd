@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Author: ahmadintech -->
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="lib/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="lib/fontawesome/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+   <title>Sarah Adebayo Profile | Innovate Nigeria</title>
+<style>
+/* CSS Variables */
+:root {
+    --brand: #047857; /* Dark Green */
+    --dark: #1f2937; /* Very Dark Gray */
+    --body: #6b7280; /* Medium Gray */
+    --border: #e5e7eb; /* Light Gray Border */
+    --light-green: #ecfdf5; /* Very Light Green */
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+              0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+/* Utilities */
+.brand-text { color: var(--dark); font-weight: 700; font-size: 1.5rem; }
+.brand-text .dot { color: var(--brand); }
+.btn-brand { background: var(--brand); color: #fff; border: 1px solid var(--brand); }
+.btn-brand-outline { border: 1px solid var(--brand); color: var(--brand); background: #fff; }
+.bg-light-green { background-color: var(--light-green); }
+.text-brand { color: var(--brand); }
+.text-body { color: var(--body); }
+.fw-semibold { font-weight: 600; }
+.rounded-15 { border-radius: 15px; }
+.p-4-5 { padding: 1.75rem !important; }
+
+/* Profile Page */
+.profile-page {
+    padding: 40px 0;
+    background: #fff;
+}
+
+/* Profile Header */
+.profile-header {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 30px;
+    background: #fff;
+}
+.profile-img-lg {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 25px;
+    border: 3px solid var(--border);
+}
+.profile-details h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--dark);
+}
+.profile-details span {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-left: 10px;
+    color: var(--body);
+}
+.profile-details p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+.contact-buttons .btn {
+    font-size: 0.9rem;
+    padding: 8px 18px;
+    font-weight: 600;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+.social-links .icon-link {
+    font-size: 1.4rem;
+    margin-right: 15px;
+    color: var(--body);
+    transition: color 0.2s;
+}
+.social-links .icon-link:hover { color: var(--brand); }
+
+/* Section Cards (About, Achievements, Skills) */
+.section-title-md {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--dark);
+}
+.about-section,
+.mb-5 {
+    border: 1px solid var(--border);
+    padding: 20px;
+    border-radius: 10px;
+    background: #fff;
+    margin-bottom: 25px;
+}
+ul.text-body li { margin-bottom: 10px; }
+
+/* Skills Tags */
+.tag-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.tag-item {
+    background: var(--light-green);
+    color: var(--brand);
+    padding: 6px 14px;
+    font-size: 0.9rem;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+/* Portfolio / Innovations */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+.portfolio-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+.portfolio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.card-image-container {
+    position: relative;
+    height: 180px;
+}
+.card-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.status-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-weight: 600;
+    color: #fff;
+}
+.status-market-ready { background: #047857; }
+.status-in-development { background: #3b82f6; }
+.status-prototype { background: #f97316; }
+.card-content {
+    padding: 15px;
+}
+.card-content h5 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+.card-content .founder {
+    font-size: 0.85rem;
+    color: var(--body);
+    margin-bottom: 10px;
+}
+.card-content p {
+    font-size: 0.9rem;
+    color: var(--body);
+    line-height: 1.5;
+}
+</style>
+
+</head>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="70">
+
+    <!-- TOP NAV -->
+    <div class="top-nav" id="home">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-auto">
+                    <p> <i class='bx bxs-envelope'></i> info@innovateng.com</p>
+                    <p> <i class='bx bxs-phone-call'></i> +234 800 123 4567</p>
+                </div>
+                <div class="col-auto social-icons">
+                    <a href="#"><i class='bx bxl-facebook'></i></a>
+                    <a href="#"><i class='bx bxl-twitter'></i></a>
+                    <a href="#"><i class='bx bxl-instagram'></i></a>
+                    <a href="#"><i class='bx bxl-pinterest'></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <!-- Logo -->
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="img/logo.png" alt="Logo" height="40" class="me-2">
+                <span class="brand-text">Innovate Nigeria<span class="dot">.</span></span>
+            </a>
+
+            <!-- Toggler always on right -->
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Nav links -->
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav mx-auto text-center text-lg-start">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="discover-talent.html">Discover Talents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">About Us</a>
+                    </li>
+                </ul>
+
+                <!-- Desktop buttons -->
+                <div class="d-none d-lg-flex ms-lg-3">
+                    <a href="#" class="btn btn-brand-outline me-2">Login</a>
+                    <a href="#" class="btn btn-brand">Register</a>
+                </div>
+
+                <!-- Mobile buttons (inside collapse) -->
+                <div class="d-lg-none mt-3 d-flex">
+                    <a href="#" class="btn btn-brand-outline w-50 mb-2 me-2 py-1">Login</a>
+                    <a href="#" class="btn btn-brand w-50 mb-2 py-1">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+<div class="main profile-page">
+    <div class="container">
+
+        <div class="profile-header d-flex flex-column flex-md-row align-items-center align-items-md-start">
+            <img src="https://i.imgur.com/G5gR9m2.png" 
+                 alt="Aisha Bello" class="profile-img-lg mb-4 mb-md-0">
+            
+            <div class="profile-details text-center text-md-start">
+                <h2>Aisha Bello <span class="text-body fw-normal fs-5">Software Engineer | AI Enthusiast</span></h2>
+                <p class="mb-2"><i class='bx bx-map text-body me-1'></i> Lagos, Nigeria</p>
+
+                <div class="contact-buttons d-flex justify-content-center justify-content-md-start mb-3">
+                    <a href="#" class="btn btn-brand d-flex align-items-center me-2"><i class='bx bxs-user-plus me-2'></i> Connect</a>
+                    <a href="#" class="btn btn-brand-outline d-flex align-items-center"><i class='bx bxs-message-dots me-2'></i> Send Message</a>
+                </div>
+                
+                <div class="social-links d-flex justify-content-center justify-content-md-start">
+                    <a href="#" class="icon-link"><i class='bx bxl-linkedin'></i></a>
+                    <a href="#" class="icon-link"><i class='bx bxl-github'></i></a>
+                    <a href="#" class="icon-link"><i class='bx bx-link'></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-section">
+            <h3 class="section-title-md">About Me</h3>
+            <p class="text-body">
+                Aisha Bello is a passionate software engineer based in Lagos, Nigeria, specializing in artificial intelligence and machine learning. 
+                With a background in computer science, she is dedicated to developing innovative solutions that address local challenges. 
+                Aisha is an active member of the tech community, often participating in hackathons and workshops to share her knowledge and collaborate with fellow innovators. 
+                She is also the vice chair for Python Nigeria and co-organizes PyLadies Nigeria and Django Girls workshops, supporting women's tech education in Africa.
+            </p>
+        </div>
+        
+        <div class="mb-5">
+            <h3 class="section-title-md">Key Achievements</h3>
+            <ul class="text-body">
+                <li class="mb-2">Winner of the 2023 National Innovation Award for our Smart Agriculture System.</li>
+                <li class="mb-2">Developed and launched an AI-powered healthcare assistant used by over 10,000 people.</li>
+                <li>Contributed to a major open-source renewable energy management platform.</li>
+            </ul>
+        </div>
+        
+        <div class="mb-5">
+            <h3 class="section-title-md">Skills</h3>
+            <div class="tag-group">
+                <span class="tag-item">Python</span>
+                <span class="tag-item">Machine Learning</span>
+                <span class="tag-item">Data Analysis</span>
+                <span class="tag-item">Cloud Computing</span>
+                <span class="tag-item">Software Development</span>
+            </div>
+        </div>
+
+
+        <h3 class="section-title-md">My Innovations</h3>
+        
+        <div class="portfolio-grid">
+            
+            <div class="portfolio-card">
+                <div class="card-image-container">
+                    <img src="https://via.placeholder.com/280x180/047857/FFFFFF?text=Smart+Agro" alt="Smart Agriculture System">
+                    <span class="status-tag status-market-ready">Market Ready</span>
+                </div>
+                <div class="card-content">
+                    <h5>Smart Agriculture System</h5>
+                    <p class="founder">Agriculture | Kano, Nigeria</p>
+                    <p>An intelligent system for optimizing crop fields using AI sensor data, maximizing yield and resource efficiency.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-card">
+                <div class="card-image-container">
+                    <img src="https://via.placeholder.com/280x180/3B82F6/FFFFFF?text=HealthTech+AI" alt="AI-Powered Healthcare Assistant">
+                    <span class="status-tag status-in-development">In Development</span>
+                </div>
+                <div class="card-content">
+                    <h5>AI-Powered Healthcare Assistant</h5>
+                    <p class="founder">HealthTech | Lagos, Nigeria</p>
+                    <p>A virtual assistant providing personalized healthcare advice and diagnostics support to underserved communities.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-card">
+                <div class="card-image-container">
+                    <img src="https://via.placeholder.com/280x180/F97316/FFFFFF?text=Renewable+Energy+Mgt" alt="Renewable Energy Management">
+                    <span class="status-tag status-prototype">Prototype</span>
+                </div>
+                <div class="card-content">
+                    <h5>Renewable Energy Management</h5>
+                    <p class="founder">Energy | Abuja, Nigeria</p>
+                    <p>A platform for managing and distributing renewable energy sources efficiently across decentralized grids.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+    <!-- CTA Section -->
+    <section id="cta-section" class="py-5 text-center">
+        <div class="container">
+            <h2 class="display-6 fw-bold mb-3">Ready to Innovate?</h2>
+            <p class="lead mb-4">
+                Join Innovate Nigeria today and be part of the movement shaping the future.
+            </p>
+            <a href="#" class="btn btn-brand btn-lg px-4 py-2 fw-semibold">
+                Get Started
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-top text-center">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 text-center">
+                        <h4 class="navbar-brand">Innovate Nigeria<span class="dot">.</span></h4>
+                        <div class="col-auto conditions-section">
+                            <a href="#">Contact Us</a>
+                            <a href="#">Privacy Policy</a>
+                            <a href="#">Terms of Service</i></a>
+                        </div>
+
+                        <div class="col-auto social-icons">
+                            <a href="#"><i class='bx bxl-facebook'></i></a>
+                            <a href="#"><i class='bx bxl-twitter'></i></a>
+                            <a href="#"><i class='bx bxl-instagram'></i></a>
+                            <a href="#"><i class='bx bxl-pinterest'></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <p class="mb-0">&copy; 2025 Innovate Nigeria. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="lib/swiper/swiper-bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/custom.js"></script>
+
+   
+</body>
+
+</html>
